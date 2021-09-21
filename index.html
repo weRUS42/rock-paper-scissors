@@ -4,9 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="script.js"></script>
-</head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Beastly&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/node_modules/@fortawesome/fontawesome-free/css/all.css">
+    <title>ROCK PAPER SCISSORS</title>
+    <script src="script.js" defer></script>
+</head> 
 <body>
+    <h1 class="title">ROCK PAPER SCISSORS</h1>
+    <div class="scores">
+        <p class="playerscore">You score <span id="playerscore">0</span></p>
+        <span class="colon">:</span>
+        <p class="computerscore"><span id="computerscore">0</span> Computer score</p>
+    </div>
+    <div class="hero">
+        <i class="fas fa-hand-rock" id="rock"></i>
+        <i class="fas fa-hand-paper" id="paper"></i>
+        <i class="fas fa-hand-scissors" id="scissors"></i>
+    </div>
+    <footer class="footer">
+        <p class="message">Choose your weapon!!!</p>
+    </footer>
 </body>
 </html>
