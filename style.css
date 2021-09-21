@@ -1,0 +1,54 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    max-height: 100vh;
+}
+.title {
+    font-family: 'Rubik Beastly', cursive;
+    font-weight: 100;
+    font-size: 70px;
+    max-height: 10vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.fas {
+    font-size: 150px;
+    transition: color 1s;
+}
+.fas:hover {
+    color: red;
+}
+
+.scores {
+    display: flex;
+    justify-content: center;
+
+    padding-top: 30px;
+    font-size: 30px;
+    max-height: 10vh;
+}
+
+.hero {
+    min-height: 60vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 200px;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 5px solid black;
+    padding: 30px;
+    font-size: 30px;
+    max-height: 10vh;
+}

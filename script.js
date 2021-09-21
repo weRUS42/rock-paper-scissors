@@ -1,66 +1,89 @@
+let playerItem;
+let compscore = document.getElementById("computerscore");
+let plscore = document.getElementById("playerscore");
+let message = document.getElementById("message");
 let wins = 0;
 let losts = 0;
-function game() {
-    for(;(wins<5)&&(losts<5);) {
-        let playerItem = prompt("choose your item");
 
-        function computerPlay() {
-            let i = Math.floor(Math.random()*3);
-            switch(i) {
-                case 0:
-                    return "Rock";
-                case 1:
-                    return "Paper";
-                case 2:
-                    return "Scissors";
-            }
-        }
-        
-        function playerPlay() {
-            playerItem = playerItem[0].toUpperCase() + playerItem.toLocaleLowerCase().slice(1);
-            return playerItem;
-        }
-        
-        function gameRound(playerSelection = playerPlay(), computerSelection = computerPlay()) {
-            if(playerSelection == computerSelection) {
-                console.log("no winners");
-                return "no winners";
-            } else if ((playerSelection == "Rock") && (computerSelection == "Scissors")) {
-                console.log("You Win! Rock beats Scissors");
-                return "You Win! Rock beats Scissors";
-            } else if ((playerSelection == "Scissors") && (computerSelection == "Paper")) {
-                console.log("You Win! Scissors beats Paper");
-                return "You Win! Scissors beats Paper";
-            } else if ((playerSelection == "Paper") && (computerSelection == "Rock")) {
-                console.log("You Win! Paper beats Rock");
-                return "You Win! Paper beats Rock";
-            } else if ((computerSelection == "Rock") && (playerSelection == "Scissors")) {
-                console.log("You Lose! Rock beats Scissors");
-                return "You Lose! Rock beats Scissors";
-            } else if ((computerSelection == "Scissors") && (playerSelection == "Paper")) {
-                console.log("You Lose! Scissors beats Paper");
-                return "You Lose! Scissors beats Paper";
-            } else if ((computerSelection == "Paper") && (playerSelection == "Rock")) {
-                console.log("You Lose! Paper beats Rock");
-                return "You Lose! Paper beats Rock";
-            }
-        }
+document.body.addEventListener("click", (e) => {
+    if(e.target.id == "") {
+        return;
+    } else {
+        playerItem = e.target.id;
+        console.log(playerItem);
+        gameRound();
+    }
+})
 
-        let gameResult = gameRound();
-
-        function checkScore() {
-            if(gameResult.charAt(4) == "W") {
-                return wins++;
-            } else {
-                return losts++;
-            }
-        }
-        checkScore();
+function computerPlay() {
+    let i = Math.floor(Math.random()*3);
+    switch(i) {
+        case 0:
+            return "rock";
+        case 1:
+            return "paper";
+        case 2:
+            return "scissors";
     }
 }
-game();
-if(wins>losts) {
-    alert("you win");
-} else {
-    alert("you lost");
+
+function gameRound(playerSelection = playerItem, computerSelection = computerPlay()) {
+    if ((wins<5)&&(losts<5)) {
+        if(playerSelection == computerSelection) {
+            message.innerText = "No winners";
+            console.log("No winners");
+            return "No winners";
+        } else if ((playerSelection == "rock") && (computerSelection == "scissors")) {
+            wins++;
+            plscore.innerText = wins;
+            message.innerText = "You Win! Rock beats Scissors";
+            console.log("You Win! Rock beats Scissors");
+            return "You Win! Rock beats Scissors";
+        } else if ((playerSelection == "scissors") && (computerSelection == "paper")) {
+            wins++;
+            plscore.innerText = wins;
+            message.innerText = "You Win! Scissors beats Paper";
+            console.log("You Win! Scissors beats Paper");
+            return "You Win! Scissors beats Paper";
+        } else if ((playerSelection == "paper") && (computerSelection == "rock")) {
+            wins++;
+            plscore.innerText = wins;
+            message.innerText = "You Win! Paper beats Rock";
+            console.log("You Win! Paper beats Rock");
+            return "You Win! Paper beats Rock";
+        } else if ((computerSelection == "rock") && (playerSelection == "scissors")) {
+            losts++;
+            compscore.innerText = losts;
+            message.innerText = "You Lose! Rock beats Scissors";
+            console.log("You Lose! Rock beats Scissors");
+            return "You Lose! Rock beats Scissors";
+        } else if ((computerSelection == "scissors") && (playerSelection == "paper")) {
+            losts++;
+            compscore.innerText = losts;
+            message.innerText = "You Lose! Scissors beats Paper";
+            console.log("You Lose! Scissors beats Paper");
+            return "You Lose! Scissors beats Paper";
+        } else if ((computerSelection == "paper") && (playerSelection == "rock")) {
+            losts++;
+            compscore.innerText = losts;
+            message.innerText = "You Lose! Paper beats Rock";
+            console.log("You Lose! Paper beats Rock");
+            return "You Lose! Paper beats Rock";
+        }
+    } else if (wins == 5) {
+        wins = 0;
+        losts = 0;
+        compscore.innerText = losts;
+        plscore.innerText = wins;
+        message.innerText = "You win";
+        return console.log("you win");
+    } else if (losts == 5) {
+        wins = 0;
+        losts = 0;
+        compscore.innerText = losts;
+        plscore.innerText = wins;
+        message.innerText = "You losts";
+        return console.log("you losts");
+    }
+
 }
